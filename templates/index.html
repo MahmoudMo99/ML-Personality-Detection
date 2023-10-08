@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <!-- <link rel="stylesheet" href="./index.css"> -->
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      background-color: #423f9a;
+      box-sizing: content-box;
+    }
+
+
+    .img1,
+    #img1,
+    .img2,
+    #img2,
+    .img3,
+    #img3,
+    .img4,
+    #img4 {
+      width: 100%;
+    }
+
+
+    #h1 {
+      position: relative;
+      text-align: center;
+      color: white;
+      margin-top: 0;
+      align-items: center;
+      display: flex;
+      padding-top: 20px;
+
+
+    }
+
+    .address-top {
+      background-image: url("c.login.jpg");
+      margin-top: 0;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+    }
+
+    #h2 {
+      display: flex;
+      position: relative;
+      text-align: center;
+      color: black;
+      align-items: center;
+    }
+
+    #rate {
+      margin-left: 750px;
+      display: flex;
+      align-items: center;
+      font-size: large;
+    }
+
+    .address-buttom {
+      margin-top: 20px;
+      height: 100px;
+      display: flex;
+      padding-left: 50px;
+      /* justify-content: center; */
+      background-color: #b9b9fd;
+    }
+
+
+    /* #form{
+    margin-top: 60px;
+    margin-left: 58px;
+} */
+
+    .divform {
+      display: flex;
+      box-sizing: content-box;
+      margin-left: 20%;
+      margin-top: 25px;
+    }
+
+    .label {
+      color: #eee;
+      box-sizing: content-box;
+      font-size: large;
+
+    }
+
+    .input {
+      display: flex;
+      margin-top: 10px;
+      box-sizing: content-box;
+      background-color: #a2a4b8;
+      border-radius: 5px;
+      border: none;
+      height: 20px;
+      font-size: medium;
+
+
+    }
+
+    #out {
+      /* color: white; */
+      margin-left: 58px;
+      font-size: 28px;
+      color: #ff0f0f;
+    }
+
+    #sub {
+      margin-left: 73%;
+      margin-top: 20px;
+      width: 200px;
+      height: 45px;
+      font-size: large;
+      /* background-color: #eee; */
+      cursor: pointer;
+      background-color: #43bd43;
+      border: none
+      
+    }
+  </style>
+</head>
+
+<body>
+  <div class="address-top">
+    <h1 id="h1">Personality Detection Model</h1>
+  </div>
+
+
+  <div class="images">
+    <div class="img1"> <img src="p1.png" id="img1"> </div>
+    <div class="img2"> <img src="p2.png" id="img2"> </div>
+    <div class="img3"> <img src="p3.png" id="img3"> </div>
+    <div class="img4"> <img src="p4.png" id="img4"> </div>
+
+  </div>
+
+
+  <div class="login">
+    <div class="address-buttom">
+      <h1 id="h2">Let's Know Your Personality</h1>
+      <p id="rate"> " Rate yourself from -3 to 3 " </p>
+    </div>
+
+
+    <!-- Main Input For Receiving Query to our ML -->
+    <div class="divform">
+      <form action="{{ url_for('predict')}}" method="post" id="form">
+        <label class="label">Response Id</label>
+        <br><input class="input" type="text" name="Response Id" required="required" />
+        <br><label class="label">You regularly make new friends</label>
+        <br><input class="input" type="text" name="You regularly make new friends" required="required" />
+        <br><label class="label">spend a lot of your free time exploring various random topics that pique your
+          interest</label>
+        <br><input class="input" type="text"
+          name="spend a lot of your free time exploring various random topics that pique your interest"
+          required="required" />
+        <br><label class="label">Seeing other people cry can easily make you feel like you want to cry too</label>
+        <br><input class="input" type="text"
+          name="Seeing other people cry can easily make you feel like you want to cry too" required="required" />
+        <br><label class="label">You often make a backup plan for a backup plan</label>
+        <br><input class="input" type="text" name="You often make a backup plan for a backup plan "
+          required="required" />
+        <br><label class="label">You usually stay calm, even under a lot of pressure</label>
+        <br><input class="input" type="text" name="You usually stay calm, even under a lot of pressure"
+          required="required" />
+        <br><label class="label">At social events, you rarely try to introduce yourself to new people and mostly talk to
+          the ones you already know</label>
+        <br><input class="input" type="text"
+          name="At social events, you rarely try to introduce yourself to new people and mostly talk to the ones you already know"
+          required="required" />
+        <br><label class="label">You prefer to completely finish one project before starting another</label>
+        <br><input class="input" type="text" name="You prefer to completely finish one project before starting another."
+          required="required" />
+        <br><label class="label">You are very sentimental</label>
+        <br><input class="input" type="text" name="You are very sentimental." required="required" />
+        <br><label class="label">You like to use organizing tools like schedules and lists</label>
+        <br><input class="input" type="text" name="You like to use organizing tools like schedules and lists."
+          required="required" />
+        <br><label class="label">Even a small mistake can cause you to doubt your overall abilities and
+          knowledge</label>
+        <br><input class="input" type="text"
+          name="Even a small mistake can cause you to doubt your overall abilities and knowledge."
+          required="required" />
+        <br><label class="label">You feel comfortable just walking up to someone you find interesting and striking up a
+          conversation</label>
+        <br><input class="input" type="text"
+          name="You feel comfortable just walking up to someone you find interesting and striking up a conversation."
+          required="required" />
+        <br><label class="label">You are not too interested in discussing various interpretations and analyses of
+          creative works</label>
+        <br><input class="input" type="text"
+          name="You are not too interested in discussing various interpretations and analyses of creative works."
+          required="required" />
+        <br><label class="label">You are more inclined to follow your head than your heart</label>
+        <br><input class="input" type="text" name="You are more inclined to follow your head than your heart."
+          required="required" />
+        <br><label class="label">You usually prefer just doing what you feel like at any given moment instead of
+          planning a particular daily routine</label>
+        <br><input class="input" type="text"
+          name="You usually prefer just doing what you feel like at any given moment instead of planning a particular daily routine."
+          required="required" />
+        <br><label class="label">You rarely worry about whether you make a good impression on people you meet</label>
+        <br><input class="input" type="text"
+          name="You rarely worry about whether you make a good impression on people you meet." required="required" />
+        <br><label class="label">You enjoy participating in group activities</label>
+        <br><input class="input" type="text" name="You enjoy participating in group activities." required="required" />
+        <br><label class="label">You like books and movies that make you come up with your own interpretation of the
+          ending</label>
+        <br><input class="input" type="text"
+          name="You like books and movies that make you come up with your own interpretation of the ending."
+          required="required" />
+        <br><label class="label">Your happiness comes more from helping others accomplish things than your own
+          accomplishments</label>
+        <br><input class="input" type="text"
+          name="Your happiness comes more from helping others accomplish things than your own accomplishments."
+          required="required" />
+        <br><label class="label">You are interested in so many things that you find it difficult to choose what to try
+          next</label>
+        <br><input class="input" type="text"
+          name="You are interested in so many things that you find it difficult to choose what to try next."
+          required="required" />
+        <br><label class="label">You are prone to worrying that things will take a turn for the worse</label>
+        <br><input class="input" type="text"
+          name="You are prone to worrying that things will take a turn for the worse." required="required" />
+        <br><label class="label">You avoid leadership roles in group settings</label>
+        <br><input class="input" type="text" name="You avoid leadership roles in group settings." required="required" />
+        <br><label class="label">You are definitely not an artistic type of person</label>
+        <br><input class="input" type="text" name="You are definitely not an artistic type of person."
+          required="required" />
+        <br><label class="label">You think the world would be a better place if people relied more on rationality and
+          less on their feelings</label>
+        <br><input class="input" type="text"
+          name="You think the world would be a better place if people relied more on rationality and less on their feelings."
+          required="required" />
+        <br><label class="label">You prefer to do your chores before allowing yourself to relax</label>
+        <br><input class="input" type="text" name="You prefer to do your chores before allowing yourself to relax."
+          required="required" />
+        <br><label class="label">You enjoy watching people argue</label>
+        <br><input class="input" type="text" name="You enjoy watching people argue." required="required" />
+        <br><label class="label">You tend to avoid drawing attention to yourself</label>
+        <br><input class="input" type="text" name="You tend to avoid drawing attention to yourself."
+          required="required" />
+        <br><label class="label">Your mood can change very quickly</label>
+        <br><input class="input" type="text" name="Your mood can change very quickly." required="required" />
+        <br><label class="label">You lose patience with people who are not as efficient as you</label>
+        <br><input class="input" type="text" name="You lose patience with people who are not as efficient as you."
+          required="required" />
+        <br><label class="label">You often end up doing things at the last possible moment</label>
+        <br><input class="input" type="text" name="You often end up doing things at the last possible moment."
+          required="required" />
+        <br><label class="label">You have always been fascinated by the question of what, if anything, happens after
+          death</label>
+        <br><input class="input" type="text"
+          name="You have always been fascinated by the question of what, if anything, happens after death."
+          required="required" />
+        <br><label class="label">You usually prefer to be around others rather than on your own</label>
+        <br><input class="input" type="text" name="You usually prefer to be around others rather than on your own."
+          required="required" />
+        <br><label class="label">You become bored or lose interest when the discussion gets highly theoretical</label>
+        <br><input class="input" type="text"
+          name="You become bored or lose interest when the discussion gets highly theoretical." required="required" />
+        <br><label class="label">You find it easy to empathize with a person whose experiences are very different from
+          yours</label>
+        <br><input class="input" type="text"
+          name="You find it easy to empathize with a person whose experiences are very different from yours."
+          required="required" />
+        <br><label class="label">You usually postpone finalizing decisions for as long as possible</label>
+        <br><input class="input" type="text" name="You usually postpone finalizing decisions for as long as possible."
+          required="required" />
+        <br><label class="label">You rarely second-guess the choices that you have made</label>
+        <br><input class="input" type="text" name="You rarely second-guess the choices that you have made."
+          required="required" />
+        <br><label class="label">After a long and exhausting week, a lively social event is just what you need</label>
+        <br><input class="input" type="text"
+          name="After a long and exhausting week, a lively social event is just what you need." required="required" />
+        <br><label class="label">You enjoy going to art museums</label>
+        <br><input class="input" type="text" name="You enjoy going to art museums." required="required" />
+        <br><label class="label">You often have a hard time understanding other people's feelings</label>
+        <br><input class="input" type="text" name="You often have a hard time understanding other people's feelings."
+          required="required" />
+        <br><label class="label">"You like to have a to-do list for each day</label>
+        <br><input class="input" type="text" name="You like to have a to-do list for each day." required="required" />
+        <br><label class="label">You rarely feel insecure</label>
+        <br><input class="input" type="text" name="You rarely feel insecure." required="required" />
+        <br><label class="label">You avoid making phone calls</label>
+        <br><input class="input" type="text" name="You avoid making phone calls." required="required" />
+        <br><label class="label">You often spend a lot of time trying to understand views that are very different from
+          your own</label>
+        <br><input class="input" type="text"
+          name="You often spend a lot of time trying to understand views that are very different from your own."
+          required="required" />
+        <br><label class="label">In your social circle, you are often the one who contacts your friends and initiates
+          activities</label>
+        <br><input class="input" type="text"
+          name="In your social circle, you are often the one who contacts your friends and initiates activities."
+          required="required" />
+        <br><label class="label">If your plans are interrupted, your top priority is to get back on track as soon as
+          possible</label>
+        <br><input class="input" type="text"
+          name="If your plans are interrupted, your top priority is to get back on track as soon as possible."
+          required="required" />
+        <br><label class="label">You are still bothered by mistakes that you made a long time ago</label>
+        <br><input class="input" type="text" name="You are still bothered by mistakes that you made a long time ago."
+          required="required" />
+        <br><label class="label">You rarely contemplate the reasons for human existence or the meaning of life</label>
+        <br><input class="input" type="text"
+          name="You rarely contemplate the reasons for human existence or the meaning of life." required="required" />
+        <br><label class="label">Your emotions control you more than you control them</label>
+        <br><input class="input" type="text" name="Your emotions control you more than you control them."
+          required="required" />
+        <br><label class="label">You take great care not to make people look bad, even when it is completely their
+          fault</label>
+        <br><input class="input" type="text"
+          name="You take great care not to make people look bad, even when it is completely their fault."
+          required="required" />
+        <br><label class="label">Your personal work style is closer to spontaneous bursts of energy than organized and
+          consistent efforts</label>
+        <br><input class="input" type="text"
+          name="Your personal work style is closer to spontaneous bursts of energy than organized and consistent efforts."
+          required="required" />
+        <br><label class="label">When someone thinks highly of you, you wonder how long it will take them to feel
+          disappointed in you</label>
+        <br><input class="input" type="text"
+          name="When someone thinks highly of you, you wonder how long it will take them to feel disappointed in you."
+          required="required" />
+        <br><label class="label">You would love a job that requires you to work alone most of the time</label>
+        <br><input class="input" type="text"
+          name="You would love a job that requires you to work alone most of the time." required="required" />
+        <br><label class="label">You believe that pondering abstract philosophical questions is a waste of time</label>
+        <br><input class="input" type="text"
+          name="You believe that pondering abstract philosophical questions is a waste of time." required="required" />
+        <br><label class="label">You feel more drawn to places with busy, bustling atmospheres than quiet, intimate
+          places</label>
+        <br><input class="input" type="text"
+          name="You feel more drawn to places with busy, bustling atmospheres than quiet, intimate places."
+          required="required" />
+        <br><label class="label">You know at first glance how someone is feeling</label>
+        <br><input class="input" type="text" name="You know at first glance how someone is feeling."
+          required="required" />
+        <br><label class="label">You often feel overwhelmed</label>
+        <br><input class="input" type="text" name="You often feel overwhelmed." required="required" />
+        <br><label class="label">You complete things methodically without skipping over any steps</label>
+        <br><input class="input" type="text" name="You complete things methodically without skipping over any steps."
+          required="required" />
+        <br><label class="label">You are very intrigued by things labeled as controversial</label>
+        <br><input class="input" type="text" name="You are very intrigued by things labeled as controversial."
+          required="required" />
+        <br><label class="label">You would pass along a good opportunity if you thought someone else needed it
+          more</label>
+        <br><input class="input" type="text"
+          name="You would pass along a good opportunity if you thought someone else needed it more."
+          required="required" />
+        <br><label class="label">You struggle with deadlines</label>
+        <br><input class="input" type="text" name="You struggle with deadlines." required="required" />
+        <br><label class="label">You feel confident that things will work out for you</label>
+        <br><input class="input" type="text" name="You feel confident that things will work out for you."
+          required="required" />
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large" id="sub">Predict</button>
+        <br>
+        <br>
+        <h1 style="color: white;">{{ prediction_text }}</h1>
+      </form>
+
+
+
+    </div>
+
+
+</body>
+
+</html>
